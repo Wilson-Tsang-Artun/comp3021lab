@@ -62,6 +62,11 @@ public class NoteBook implements Serializable {
 		return insertNote(folderName, note);
 	}
 	
+	public boolean createTextNote(String folderName , String title) {
+		TextNote note = new TextNote(title);
+		return insertNote(folderName, note);
+	}
+	
 	public boolean createTextNote(String folderName , String title, String content) {
 		TextNote note = new TextNote(title, content);
 		return insertNote(folderName, note);
@@ -98,6 +103,23 @@ public class NoteBook implements Serializable {
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean isFolderNameExist(String name) {
+		for(Folder folder : this.folders) {
+			if( folder.getName().equals(name) ) 
+				return true;
+		}
+		return false;
+	}
+	
+	public void addFolder(String folderName) {
+	    //TODO lab8 task2  
+		Folder folder = new Folder(folderName);
+		this.folders.add(folder);
+		//for(Folder f : folders) {
+			//System.out.println(f.getName());
+		//}
 	}
 	
 }

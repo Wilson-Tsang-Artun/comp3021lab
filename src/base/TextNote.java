@@ -66,7 +66,9 @@ public class TextNote extends Note implements Serializable{
 		}catch(Exception e){}
 	}
 	
-
+	public void setContent(String words) {
+		this.content = words;
+	}
 	
 	
 }

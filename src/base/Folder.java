@@ -25,6 +25,21 @@ public class Folder implements Comparable<Folder>, Serializable {
 	public ArrayList<Note> getNotes() {
 		return this.notes;
 	}
+	
+	public boolean removeNote(String title) {
+		// TODO
+		// Given the title of the note, delete it from the folder.
+		// Return true if it is deleted successfully, otherwise return false. 
+		int noteIndex = 0;
+		for(Note note : this.notes) {
+			if(note.getTitle().equals(title)) {
+				this.notes.remove(noteIndex);
+				return true;
+			}
+			noteIndex++;
+		}
+		return false;
+	}
 
 	public String toString() {
 		int nText = 0;
@@ -55,6 +70,16 @@ public class Folder implements Comparable<Folder>, Serializable {
 	public void sortNotes() {
 		Collections.sort(this.notes);
 	}
+	
+	public boolean isContainingTextNote() {
+		for(Note note : notes) {
+			if(note instanceof TextNote) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 
 	public List<Note> searchNotes(String keywords) {
 
